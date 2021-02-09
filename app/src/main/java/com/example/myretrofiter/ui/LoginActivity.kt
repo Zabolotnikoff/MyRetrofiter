@@ -10,15 +10,15 @@ import com.example.myapplication.data.home.models.Auth
 import com.example.myretrofiter.R
 import com.example.myretrofiter.Session
 import com.example.myretrofiter.viewmodel.LoanViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_login.*
 
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var loanViewModel: LoanViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         buttonLogin.setOnClickListener {
             loanViewModel = ViewModelProvider(this)[LoanViewModel::class.java]
@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
             register(authData)
         }
-
-
     }
 
     fun register(authData: Auth) {
@@ -40,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                     showToast("Что-то во время регистрации пошло нетак :(")
                 }
             })
-
     }
 
     fun login(authData: Auth) {
@@ -54,12 +51,10 @@ class MainActivity : AppCompatActivity() {
                     showToast("Что-то при авторизации пошло нетак :(")
                 }
             })
-
     }
 
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
-
 }

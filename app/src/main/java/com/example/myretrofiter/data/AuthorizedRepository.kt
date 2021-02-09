@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 class AuthorizedRepository {
 
     private var authorizedAPI: AuthorizedAPI? = null
@@ -24,7 +25,6 @@ class AuthorizedRepository {
         retrofit = retrofitInit()
         authorizedAPI = retrofit.create(AuthorizedAPI::class.java)
     }
-
 
     fun createNewLoan(loanRequest: LoanRequest): LiveData<Loan> {
         val result = MutableLiveData<Loan>()
@@ -103,7 +103,6 @@ class AuthorizedRepository {
         })
         return result
     }
-
 
     private fun retrofitInit(): Retrofit {
         val gson = GsonBuilder()

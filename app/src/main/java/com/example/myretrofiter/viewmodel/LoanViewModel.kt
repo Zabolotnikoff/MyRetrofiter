@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.data.home.models.Auth
 import com.example.myapplication.data.home.models.Loan
 import com.example.myapplication.data.home.models.LoanConditions
@@ -11,7 +12,8 @@ import com.example.myapplication.data.home.models.LoanRequest
 import com.example.myretrofiter.data.AuthorizedRepository
 import com.example.myretrofiter.data.UnauthorizedRepository
 
-class LoanViewModel(application: Application) : AndroidViewModel(application) {
+//class LoanViewModel(application: Application) : AndroidViewModel(application) {
+    class LoanViewModel: ViewModel (){
 
     private val authRepository = AuthorizedRepository()
     private val unauthRepository = UnauthorizedRepository()
@@ -38,7 +40,6 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
     fun registerInApp(authData: Auth) {
         intLiveData = unauthRepository.registerInApp(authData)
     }
-
 
     fun createNewLoan(loanRequest: LoanRequest) {
         loanLiveDataCreate = authRepository.createNewLoan(loanRequest)
